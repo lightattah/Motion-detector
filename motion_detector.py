@@ -22,9 +22,12 @@ while True:
     for contour in cnts:
         if cv2.contourArea(contour) < 1000:
             continue
-            
+        #We want to ignore any motion less than 1000 pixels(100*10, 32*32 etc), as they are too small in this instance
+        #This number is purely based on taste, and could be different for a security camera, for example; as this has a much higher range and moving objects would be much smaller.  
+        
         (x,y,w,h) = cv2.boundingRect(contour)
-        cv2.rectangle(frame, (x,y), (x+w, y+h), (255, 0, 0), 3)
+        cv2.rectangle(frame, (x,y), (x+w, y+h), (255, 0, 0), 3) #The colour could be changed by altering the values in the 3*1 BGR tuple. I chose blue here.
+        #draws bounding square/rectangle around moving object 
 
     cv2.imshow("Grey Frame", gray)
     cv2.imshow("Delta Frame", delta_frame)
