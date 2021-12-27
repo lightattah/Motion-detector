@@ -38,6 +38,5 @@ while True:
     key = cv2.waitKey(1)
 
     if key == ord("q"):
-        break
-
+        break #The motion detection in-video process would stop when the key "q" is pressed on the keyboard. Can be changed to taste.
 video.release()
